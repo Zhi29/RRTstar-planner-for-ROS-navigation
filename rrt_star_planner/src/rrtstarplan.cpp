@@ -45,6 +45,7 @@ void RRT::initialize(std::string name, costmap_2d::Costmap2DROS* costmap_ros)
             costmap_ros_ = costmap_ros; //initialize the costmap_ros_ attribute to the parameter.
             costmap_ = costmap_ros_->getCostmap(); //get the costmap_ from costmap_ros_
             footprint = costmap_ros_->getRobotFootprint();
+            rrt_publisher = pn.advertise<visualization_msgs::Marker> ("path_planner_rrt",1000);
 
         // initialize other planner parameters
         /*ros::NodeHandle private_nh("~/" + name);
@@ -561,7 +562,6 @@ bool RRT::makePlan(const geometry_msgs::PoseStamped& start, const geometry_msgs:
 
     plan.clear();
     rrtTree.clear();
-    ros::Publisher rrt_publisher = pn.advertise<visualization_msgs::Marker> ("path_planner_rrt",1000);
 
 	//defining markers
     visualization_msgs::Marker sourcePoint;

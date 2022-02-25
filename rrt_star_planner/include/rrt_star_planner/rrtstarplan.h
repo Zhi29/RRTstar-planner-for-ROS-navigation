@@ -96,6 +96,7 @@ namespace rrtstar_planner {
             costmap_2d::Costmap2D* costmap_;
             base_local_planner::WorldModel* world_model_;
             std::vector<geometry_msgs::Point> footprint;
+            ros::Publisher rrt_publisher;
 	};
 };
 
